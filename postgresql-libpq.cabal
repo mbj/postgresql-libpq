@@ -49,6 +49,12 @@ flag use-pkg-config
   default: False
   manual:  True
 
+-- If true, add extra libraries needed for alpine on static builds.
+-- this is NOT the correct solution but a workaround.
+flag static
+  default: False
+  manual:  True
+
 library
   hs-source-dirs:  src
   c-sources:       cbits/noticehandlers.c
@@ -83,6 +89,13 @@ library
 
     else
       extra-libraries: pq
+
+      if flag(static)
+        extra-libraries:
+          pgport
+          pgcommon
+          ssl
+          crypto
 
       if os(openbsd)
         extra-libraries:
