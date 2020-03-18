@@ -50,7 +50,7 @@ flag use-pkg-config
   manual:  True
 
 -- If true, add extra libraries needed for alpine on static builds.
--- this is NOT the correct solution but a workaround.
+-- This is NOT the correct solution but a workaround.
 flag static
   default: False
   manual:  True
